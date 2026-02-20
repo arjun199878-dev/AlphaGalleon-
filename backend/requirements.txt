@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-dotenv
+upstox-python-sdk
+google-generativeai
+pydantic
+pandas
+numpy
+httpx

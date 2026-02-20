@@ -1,0 +1,11 @@
+.env
+node_modules/
+__pycache__/
+.DS_Store
+*.log
+expo_output.txt
+dist/
+build/
+.vscode/
+.idea/
+*.swp

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, Image } from 'react-native';
-import { theme } from '../theme';
+import theme, { COLORS, SPACING } from '../theme';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const HomeScreen = ({ navigation }) => {
@@ -65,11 +65,11 @@ const HomeScreen = ({ navigation }) => {
             <ScrollView contentContainerStyle={styles.content}>
                 {/* Search Bar */}
                 <View style={styles.searchBar}>
-                    <Ionicons name="search-outline" size={20} color={theme.colors.textMuted} style={{ marginRight: 10 }} />
+                    <Ionicons name="search-outline" size={20} color={COLORS.textMuted} style={{ marginRight: 10 }} />
                     <TextInput
                         style={styles.searchInput}
                         placeholder="Search stocks, mutual funds..."
-                        placeholderTextColor={theme.colors.textMuted}
+                        placeholderTextColor={COLORS.textMuted}
                         value={searchQuery}
                         onChangeText={setSearchQuery}
                         onSubmitEditing={handleSearch}
@@ -90,7 +90,7 @@ const HomeScreen = ({ navigation }) => {
                         <View style={styles.stockIcon}><Text style={styles.stockInitial}>T</Text></View>
                         <Text style={styles.stockName} numberOfLines={1}>Tata Steel</Text>
                         <Text style={styles.stockPrice}>₹156.40</Text>
-                        <Text style={[styles.stockChange, { color: theme.colors.success }]}>+4.25 (2.6%)</Text>
+                        <Text style={[styles.stockChange, { color: COLORS.success }]}>+4.25 (2.6%)</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.stockCard} onPress={() => navigation.navigate('Memo', { symbol: 'INFY' })}>
@@ -104,7 +104,7 @@ const HomeScreen = ({ navigation }) => {
                         <View style={styles.stockIcon}><Text style={styles.stockInitial}>H</Text></View>
                         <Text style={styles.stockName} numberOfLines={1}>HDFC Bank</Text>
                         <Text style={styles.stockPrice}>₹1,650.00</Text>
-                        <Text style={[styles.stockChange, { color: theme.colors.success }]}>+15.00 (0.9%)</Text>
+                        <Text style={[styles.stockChange, { color: COLORS.success }]}>+15.00 (0.9%)</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -112,7 +112,7 @@ const HomeScreen = ({ navigation }) => {
                 <Text style={styles.sectionTitle}>Products & Tools</Text>
                 <View style={styles.productsRow}>
                     <TouchableOpacity style={styles.productItem} onPress={() => navigation.navigate('Tools')}>
-                        <View style={styles.productIcon}><Ionicons name="grid" size={24} color={theme.colors.primary} /></View>
+                        <View style={styles.productIcon}><Ionicons name="grid" size={24} color={COLORS.primary} /></View>
                         <Text style={styles.productText}>All Tools</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.productItem}>
@@ -137,20 +137,20 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: COLORS.background,
         paddingTop: 50,
     },
     header: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: theme.spacing.l,
-        marginBottom: theme.spacing.m,
+        paddingHorizontal: SPACING.l,
+        marginBottom: SPACING.m,
     },
     headerTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        color: '#000',
+        color: COLORS.text,
     },
     headerIcons: {
         flexDirection: 'row',
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
         width: 32,
         height: 32,
         borderRadius: 16,
-        backgroundColor: theme.colors.primary,
+        backgroundColor: COLORS.primary,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -173,17 +173,17 @@ const styles = StyleSheet.create({
     },
     indicesRow: {
         flexDirection: 'row',
-        paddingHorizontal: theme.spacing.l,
-        paddingBottom: theme.spacing.m,
+        paddingHorizontal: SPACING.l,
+        paddingBottom: SPACING.m,
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F0',
     },
     indexItem: {
-        marginRight: theme.spacing.xl,
+        marginRight: SPACING.xl,
     },
     indexName: {
         fontSize: 12,
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontWeight: '600',
         textTransform: 'uppercase',
     },
@@ -194,46 +194,46 @@ const styles = StyleSheet.create({
     indexValue: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#000',
+        color: COLORS.text,
         marginRight: 6,
     },
     indexChange: {
         fontSize: 12,
-        color: theme.colors.success,
+        color: COLORS.success,
     },
     tabRow: {
         flexDirection: 'row',
-        paddingHorizontal: theme.spacing.l,
-        paddingVertical: theme.spacing.m,
+        paddingHorizontal: SPACING.l,
+        paddingVertical: SPACING.m,
     },
     tabItem: {
-        marginRight: theme.spacing.l,
+        marginRight: SPACING.l,
         paddingBottom: 6,
     },
     activeTab: {
         borderBottomWidth: 2,
-        borderBottomColor: theme.colors.primary,
+        borderBottomColor: COLORS.primary,
     },
     tabText: {
         fontSize: 16,
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontWeight: '600',
     },
     activeTabText: {
-        color: theme.colors.primary,
+        color: COLORS.primary,
     },
     content: {
-        paddingHorizontal: theme.spacing.l,
+        paddingHorizontal: SPACING.l,
         paddingBottom: 100,
     },
     searchBar: {
         flexDirection: 'row',
         alignItems: 'center',
-        backgroundColor: theme.colors.surfaceLight,
+        backgroundColor: COLORS.surface,
         borderRadius: 8,
         paddingHorizontal: 12,
         paddingVertical: 10,
-        marginBottom: theme.spacing.l,
+        marginBottom: SPACING.l,
         borderWidth: 1,
         borderColor: '#E2E8F0',
     },
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         color: '#000',
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     cardGrid: {
         flexDirection: 'row',
@@ -255,7 +255,7 @@ const styles = StyleSheet.create({
     },
     stockCard: {
         width: '48%',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: COLORS.surface,
         padding: 12,
         borderRadius: 8,
         borderWidth: 1,
@@ -296,12 +296,12 @@ const styles = StyleSheet.create({
     },
     stockChange: {
         fontSize: 12,
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
     },
     productsRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: theme.spacing.s,
+        marginTop: SPACING.s,
     },
     productItem: {
         alignItems: 'center',
@@ -317,7 +317,7 @@ const styles = StyleSheet.create({
     },
     productText: {
         fontSize: 12,
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontWeight: '600',
     },
 });

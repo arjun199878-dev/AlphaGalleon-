@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator, Alert, Dimensions } from 'react-native';
-import { theme } from '../theme';
+import theme, { COLORS, SPACING } from '../theme';
 import { runBacktest } from '../api/client';
 import { LineChart } from 'react-native-chart-kit';
 
@@ -66,14 +66,14 @@ const BacktestScreen = () => {
                                 <TextInput
                                     style={[styles.input, styles.symbolInput]}
                                     placeholder="Symbol (e.g. INFY)"
-                                    placeholderTextColor={theme.colors.textMuted}
+                                    placeholderTextColor={COLORS.textMuted}
                                     value={item.symbol}
                                     onChangeText={(text) => updateHolding(index, 'symbol', text)}
                                 />
                                 <TextInput
                                     style={[styles.input, styles.qtyInput]}
                                     placeholder="Alloc %"
-                                    placeholderTextColor={theme.colors.textMuted}
+                                    placeholderTextColor={COLORS.textMuted}
                                     keyboardType="numeric"
                                     value={item.allocation}
                                     onChangeText={(text) => updateHolding(index, 'allocation', text)}
@@ -113,13 +113,13 @@ const BacktestScreen = () => {
                     <View style={styles.metricRow}>
                         <View style={styles.metricItem}>
                             <Text style={styles.metricLabel}>CAGR</Text>
-                            <Text style={[styles.metricValue, { color: result.metrics.cagr_pct >= 0 ? theme.colors.success : theme.colors.danger }]}>
+                            <Text style={[styles.metricValue, { color: result.metrics.cagr_pct >= 0 ? COLORS.success : COLORS.danger }]}>
                                 {result.metrics.cagr_pct}%
                             </Text>
                         </View>
                         <View style={styles.metricItem}>
                             <Text style={styles.metricLabel}>Max Drawdown</Text>
-                            <Text style={[styles.metricValue, { color: theme.colors.danger }]}>
+                            <Text style={[styles.metricValue, { color: COLORS.danger }]}>
                                 {result.metrics.max_drawdown_pct}%
                             </Text>
                         </View>
@@ -142,9 +142,9 @@ const BacktestScreen = () => {
                         yAxisLabel="₹"
                         yAxisInterval={1}
                         chartConfig={{
-                            backgroundColor: theme.colors.surface,
-                            backgroundGradientFrom: theme.colors.surface,
-                            backgroundGradientTo: theme.colors.surface,
+                            backgroundColor: COLORS.surface,
+                            backgroundGradientFrom: COLORS.surface,
+                            backgroundGradientTo: COLORS.surface,
                             decimalPlaces: 0,
                             color: (opacity = 1) => `rgba(16, 185, 129, ${opacity})`, // Emerald Green
                             labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
@@ -176,78 +176,78 @@ const BacktestScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.colors.background,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.background,
+        padding: SPACING.l,
     },
     headerTitle: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.s,
+        color: COLORS.text,
+        marginBottom: SPACING.s,
     },
     subTitle: {
-        color: theme.colors.textMuted,
-        marginBottom: theme.spacing.l,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.l,
         fontSize: 14,
     },
     card: {
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.l,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     inputRow: {
         flexDirection: 'row',
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     input: {
-        backgroundColor: theme.colors.background,
-        color: theme.colors.text,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.background,
+        color: COLORS.text,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         fontSize: 16,
     },
     symbolInput: {
         flex: 2,
-        marginRight: theme.spacing.s,
+        marginRight: SPACING.s,
     },
     qtyInput: {
         flex: 1,
     },
     addButton: {
         alignItems: 'center',
-        padding: theme.spacing.s,
-        marginBottom: theme.spacing.m,
+        padding: SPACING.s,
+        marginBottom: SPACING.m,
     },
     addButtonText: {
-        color: theme.colors.primary,
+        color: COLORS.primary,
         fontWeight: 'bold',
     },
     label: {
-        color: theme.colors.textMuted,
-        marginBottom: theme.spacing.s,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.s,
         fontSize: 14,
     },
     buttonRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: theme.spacing.l,
+        marginBottom: SPACING.l,
     },
     optionButton: {
         flex: 1,
-        padding: theme.spacing.m,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         borderWidth: 1,
-        borderColor: theme.colors.border,
+        borderColor: COLORS.border,
         alignItems: 'center',
         marginHorizontal: 4,
     },
     selectedOption: {
-        backgroundColor: theme.colors.primary,
-        borderColor: theme.colors.primary,
+        backgroundColor: COLORS.primary,
+        borderColor: COLORS.primary,
     },
     optionText: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 12,
         fontWeight: '600',
     },
@@ -255,8 +255,8 @@ const styles = StyleSheet.create({
         color: '#FFF',
     },
     runButton: {
-        backgroundColor: theme.colors.primary,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.primary,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         alignItems: 'center',
     },
@@ -266,42 +266,42 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     resultContainer: {
-        paddingBottom: theme.spacing.xl,
+        paddingBottom: SPACING.xl,
     },
     metricRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: theme.spacing.l,
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.m,
+        marginBottom: SPACING.l,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.m,
     },
     metricItem: {
         alignItems: 'center',
     },
     metricLabel: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 12,
         marginBottom: 4,
     },
     metricValue: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: theme.colors.text,
+        color: COLORS.text,
     },
     chartTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.m,
+        color: COLORS.text,
+        marginBottom: SPACING.m,
     },
     resetButton: {
-        padding: theme.spacing.l,
+        padding: SPACING.l,
         alignItems: 'center',
-        marginTop: theme.spacing.m,
+        marginTop: SPACING.m,
     },
     resetText: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         textDecorationLine: 'underline',
     },
 });

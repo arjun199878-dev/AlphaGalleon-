@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView, ActivityIndicator, StyleSheet, Image } from 'react-native';
-import { theme } from '../theme';
+import theme, { COLORS, SPACING } from '../theme';
 import { getInvestmentMemo } from '../api/client';
 
 const MemoScreen = ({ route, navigation }) => {
@@ -28,7 +28,7 @@ const MemoScreen = ({ route, navigation }) => {
     if (loading) {
         return (
             <View style={styles.loadingContainer}>
-                <ActivityIndicator size="large" color={theme.colors.primary} />
+                <ActivityIndicator size="large" color={COLORS.primary} />
                 <Text style={styles.loadingText}>Synthesizing Intelligence...</Text>
             </View>
         );
@@ -46,9 +46,9 @@ const MemoScreen = ({ route, navigation }) => {
     const { verdict, risk_rating, summary, bull_case, bear_case } = memo;
 
     const verdictColor = 
-        verdict === 'BUY' ? theme.colors.success :
-        verdict === 'SELL' ? theme.colors.danger :
-        theme.colors.primary;
+        verdict === 'BUY' ? COLORS.success :
+        verdict === 'SELL' ? COLORS.danger :
+        COLORS.primary;
 
     return (
         <ScrollView style={styles.container}>
@@ -60,7 +60,7 @@ const MemoScreen = ({ route, navigation }) => {
                     <Text style={styles.price}>₹{market_data.lastPrice}</Text>
                     <Text style={[
                         styles.change, 
-                        { color: market_data.change > 0 ? theme.colors.success : theme.colors.danger }
+                        { color: market_data.change > 0 ? COLORS.success : COLORS.danger }
                     ]}>
                         {market_data.change > 0 ? '+' : ''}{market_data.change} ({market_data.pChange}%)
                     </Text>
@@ -96,18 +96,18 @@ const MemoScreen = ({ route, navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.colors.background,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.background,
+        padding: SPACING.l,
     },
     loadingContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: theme.colors.background,
+        backgroundColor: COLORS.background,
     },
     loadingText: {
-        marginTop: theme.spacing.m,
-        color: theme.colors.textMuted,
+        marginTop: SPACING.m,
+        color: COLORS.textMuted,
     },
     errorContainer: {
         flex: 1,
@@ -115,20 +115,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     errorText: {
-        color: theme.colors.danger,
+        color: COLORS.danger,
     },
     header: {
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     symbol: {
         fontSize: 32,
         fontWeight: '900',
-        color: theme.colors.text,
+        color: COLORS.text,
     },
     companyName: {
         fontSize: 16,
-        color: theme.colors.textMuted,
-        marginBottom: theme.spacing.s,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.s,
     },
     priceRow: {
         flexDirection: 'row',
@@ -137,51 +137,51 @@ const styles = StyleSheet.create({
     price: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginRight: theme.spacing.m,
+        color: COLORS.text,
+        marginRight: SPACING.m,
     },
     change: {
         fontSize: 18,
         fontWeight: '600',
     },
     card: {
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.l,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     verdictTitle: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
     riskText: {
-        color: theme.colors.textMuted,
-        marginBottom: theme.spacing.m,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.m,
         fontWeight: '600',
     },
     summaryText: {
-        color: theme.colors.text,
+        color: COLORS.text,
         fontSize: 16,
         lineHeight: 24,
     },
     section: {
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     sectionHeader: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.m,
+        color: COLORS.text,
+        marginBottom: SPACING.m,
         borderBottomWidth: 1,
-        borderBottomColor: theme.colors.surfaceLight,
-        paddingBottom: theme.spacing.s,
+        borderBottomColor: COLORS.surfaceLight,
+        paddingBottom: SPACING.s,
     },
     bulletPoint: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 14,
         lineHeight: 22,
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
 });
 

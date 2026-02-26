@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
-import { theme } from '../theme';
+import theme, { COLORS, SPACING } from '../theme';
 
 const ProfileScreen = () => {
     return (
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
     header: {
         alignItems: 'center',
-        paddingVertical: theme.spacing.xl,
+        paddingVertical: SPACING.xl,
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F0',
     },
@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
         width: 80,
         height: 80,
         borderRadius: 40,
-        backgroundColor: theme.colors.primary, // Groww Blue/Green
+        backgroundColor: COLORS.primary, // Groww Blue/Green
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     avatarText: {
         fontSize: 32,
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: theme.spacing.l,
+        padding: SPACING.l,
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F0',
     },
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     },
     balanceLabel: {
         fontSize: 12,
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
     },
     addButton: {
         backgroundColor: '#E0F2F1', // Light Green
@@ -101,11 +101,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     menu: {
-        marginTop: theme.spacing.m,
+        marginTop: SPACING.m,
     },
     menuItem: {
-        paddingVertical: theme.spacing.l,
-        paddingHorizontal: theme.spacing.l,
+        paddingVertical: SPACING.l,
+        paddingHorizontal: SPACING.l,
         borderBottomWidth: 1,
         borderBottomColor: '#F0F0F0',
     },

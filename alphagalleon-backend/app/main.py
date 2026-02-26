@@ -8,14 +8,16 @@ from dotenv import load_dotenv
 # Import our internal modules
 from app.schemas import Ticker, FundamentalData, InvestmentMemo
 from app.brain import Brain
+from app.convex_service import ConvexService
 
 # Load environment variables
 load_dotenv()
 
 app = FastAPI(title="AlphaGalleon API", version="0.1.0")
 
-# Initialize Brain
+# Initialize Engines
 brain_engine = Brain()
+convex_service = ConvexService()
 
 class MemoRequest(BaseModel):
     ticker: str
@@ -62,6 +64,22 @@ def create_memo(request: MemoRequest):
     # 2. Call The Brain
     try:
         memo = brain_engine.generate_memo(fund_data)
+        
+        # 3. Store in Convex (Async/Background ideally, but simple for now)
+        convex_service.store_memo({
+            "symbol": memo.ticker_symbol,
+            "verdict": memo.recommendation.upper(),
+            "confidence": memo.confidence_score,
+            "summary": memo.thesis_summary,
+            "reasoning": f"BULLS: {', '.join(memo.bull_case)}\nBEARS: {', '.join(memo.bear_case)}\nVALUATION: {memo.valuation_verdict}",
+            "priceAtGeneration": request.price
+        })
+        
+        convex_service.log_activity(
+            action="GENERATE_MEMO",
+            details=f"Generated memo for {memo.ticker_symbol} with {memo.recommendation.upper()} verdict."
+        )
+
         return memo
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

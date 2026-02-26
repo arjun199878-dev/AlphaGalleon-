@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { theme } from '../theme';
+import theme from '../theme';
 
 const StockCard = ({ symbol, price, change, percentChange, verdict, onPress }) => {
     // Determine color based on verdict or change

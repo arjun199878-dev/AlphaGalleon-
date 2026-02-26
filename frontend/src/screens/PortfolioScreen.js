@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator, Dimensions } from 'react-native';
-import { theme } from '../theme';
+import theme, { COLORS, SPACING } from '../theme';
 import { generatePortfolio } from '../api/client';
 import { PieChart } from 'react-native-chart-kit';
 
@@ -33,10 +33,10 @@ const PortfolioScreen = () => {
         const parse = (val) => parseFloat(val.replace('%', ''));
         
         return [
-            { name: 'Equity', population: parse(allocation.Equity), color: theme.colors.primary, legendFontColor: theme.colors.textMuted, legendFontSize: 12 },
-            { name: 'Debt', population: parse(allocation.Debt), color: theme.colors.success, legendFontColor: theme.colors.textMuted, legendFontSize: 12 },
-            { name: 'Gold', population: parse(allocation.Gold), color: '#FCD34D', legendFontColor: theme.colors.textMuted, legendFontSize: 12 },
-            { name: 'Cash', population: parse(allocation.Cash), color: theme.colors.secondary, legendFontColor: theme.colors.textMuted, legendFontSize: 12 },
+            { name: 'Equity', population: parse(allocation.Equity), color: COLORS.primary, legendFontColor: COLORS.textMuted, legendFontSize: 12 },
+            { name: 'Debt', population: parse(allocation.Debt), color: COLORS.success, legendFontColor: COLORS.textMuted, legendFontSize: 12 },
+            { name: 'Gold', population: parse(allocation.Gold), color: '#FCD34D', legendFontColor: COLORS.textMuted, legendFontSize: 12 },
+            { name: 'Cash', population: parse(allocation.Cash), color: COLORS.secondary, legendFontColor: COLORS.textMuted, legendFontSize: 12 },
         ].filter(item => item.population > 0);
     };
 
@@ -127,54 +127,54 @@ const PortfolioScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.colors.background,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.background,
+        padding: SPACING.l,
     },
     headerTitle: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.l,
+        color: COLORS.text,
+        marginBottom: SPACING.l,
     },
     card: {
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.l,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     label: {
-        color: theme.colors.textMuted,
-        marginBottom: theme.spacing.s,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.s,
         fontSize: 14,
     },
     input: {
-        backgroundColor: theme.colors.background,
-        color: theme.colors.text,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.background,
+        color: COLORS.text,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
         fontSize: 16,
     },
     buttonRow: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     optionButton: {
         flex: 1,
-        padding: theme.spacing.m,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         borderWidth: 1,
-        borderColor: theme.colors.border,
+        borderColor: COLORS.border,
         alignItems: 'center',
         marginHorizontal: 4,
     },
     selectedOption: {
-        backgroundColor: theme.colors.primary,
-        borderColor: theme.colors.primary,
+        backgroundColor: COLORS.primary,
+        borderColor: COLORS.primary,
     },
     optionText: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 12,
         fontWeight: '600',
     },
@@ -182,11 +182,11 @@ const styles = StyleSheet.create({
         color: '#FFF',
     },
     generateButton: {
-        backgroundColor: theme.colors.success,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.success,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         alignItems: 'center',
-        marginTop: theme.spacing.m,
+        marginTop: SPACING.m,
     },
     generateText: {
         color: '#FFF',
@@ -194,48 +194,48 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     resultContainer: {
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     strategyTitle: {
         fontSize: 22,
         fontWeight: 'bold',
-        color: theme.colors.primary,
-        marginBottom: theme.spacing.s,
+        color: COLORS.primary,
+        marginBottom: SPACING.s,
     },
     rationale: {
-        color: theme.colors.text,
+        color: COLORS.text,
         lineHeight: 20,
-        marginBottom: theme.spacing.l,
+        marginBottom: SPACING.l,
     },
     chartContainer: {
         alignItems: 'center',
-        marginBottom: theme.spacing.l,
+        marginBottom: SPACING.l,
     },
     sectionHeader: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.m,
-        marginTop: theme.spacing.s,
+        color: COLORS.text,
+        marginBottom: SPACING.m,
+        marginTop: SPACING.s,
     },
     pickRow: {
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     pickHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
     pickSymbol: {
-        color: theme.colors.text,
+        color: COLORS.text,
         fontWeight: 'bold',
         fontSize: 16,
     },
     pickReason: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 14,
         lineHeight: 20,
     },

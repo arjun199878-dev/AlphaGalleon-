@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, StyleSheet, ActivityIndicator, Alert } from 'react-native';
-import { theme } from '../theme';
+import theme, { COLORS, SPACING } from '../theme';
 import { diagnosePortfolio } from '../api/client';
 
 const DoctorScreen = () => {
@@ -49,9 +49,9 @@ const DoctorScreen = () => {
     };
 
     const getScoreColor = (score) => {
-        if (score >= 80) return theme.colors.success;
-        if (score >= 50) return theme.colors.primary;
-        return theme.colors.danger;
+        if (score >= 80) return COLORS.success;
+        if (score >= 50) return COLORS.primary;
+        return COLORS.danger;
     };
 
     return (
@@ -68,14 +68,14 @@ const DoctorScreen = () => {
                                 <TextInput
                                     style={[styles.input, styles.symbolInput]}
                                     placeholder="Symbol (e.g. INFY)"
-                                    placeholderTextColor={theme.colors.textMuted}
+                                    placeholderTextColor={COLORS.textMuted}
                                     value={item.symbol}
                                     onChangeText={(text) => updateHolding(index, 'symbol', text)}
                                 />
                                 <TextInput
                                     style={[styles.input, styles.qtyInput]}
                                     placeholder="Qty"
-                                    placeholderTextColor={theme.colors.textMuted}
+                                    placeholderTextColor={COLORS.textMuted}
                                     keyboardType="numeric"
                                     value={item.quantity}
                                     onChangeText={(text) => updateHolding(index, 'quantity', text)}
@@ -129,7 +129,7 @@ const DoctorScreen = () => {
                                     <Text style={styles.rxSymbol}>{rx.symbol}</Text>
                                     <View style={[
                                         styles.rxBadge, 
-                                        { backgroundColor: rx.action.includes('SELL') ? theme.colors.danger : theme.colors.success }
+                                        { backgroundColor: rx.action.includes('SELL') ? COLORS.danger : COLORS.success }
                                     ]}>
                                         <Text style={styles.rxAction}>{rx.action}</Text>
                                     </View>
@@ -151,56 +151,56 @@ const DoctorScreen = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: theme.colors.background,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.background,
+        padding: SPACING.l,
     },
     headerTitle: {
         fontSize: 28,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.s,
+        color: COLORS.text,
+        marginBottom: SPACING.s,
     },
     subTitle: {
-        color: theme.colors.textMuted,
-        marginBottom: theme.spacing.l,
+        color: COLORS.textMuted,
+        marginBottom: SPACING.l,
         fontSize: 14,
     },
     card: {
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.l,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.l,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     inputRow: {
         flexDirection: 'row',
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     input: {
-        backgroundColor: theme.colors.background,
-        color: theme.colors.text,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.background,
+        color: COLORS.text,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         fontSize: 16,
     },
     symbolInput: {
         flex: 2,
-        marginRight: theme.spacing.s,
+        marginRight: SPACING.s,
     },
     qtyInput: {
         flex: 1,
     },
     addButton: {
         alignItems: 'center',
-        padding: theme.spacing.s,
-        marginBottom: theme.spacing.l,
+        padding: SPACING.s,
+        marginBottom: SPACING.l,
     },
     addButtonText: {
-        color: theme.colors.primary,
+        color: COLORS.primary,
         fontWeight: 'bold',
     },
     diagnoseButton: {
-        backgroundColor: theme.colors.danger, // Red for medical emergency vibe
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.danger, // Red for medical emergency vibe
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.s,
         alignItems: 'center',
     },
@@ -211,71 +211,71 @@ const styles = StyleSheet.create({
     },
     scoreCard: {
         alignItems: 'center',
-        marginBottom: theme.spacing.xl,
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.l,
+        marginBottom: SPACING.xl,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.l,
         borderRadius: theme.borderRadius.l,
     },
     scoreTitle: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 16,
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
     scoreValue: {
         fontSize: 48,
         fontWeight: '900',
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
     riskLabel: {
-        color: theme.colors.text,
+        color: COLORS.text,
         fontSize: 18,
         fontWeight: 'bold',
     },
     section: {
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
     },
     sectionHeader: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: theme.colors.text,
-        marginBottom: theme.spacing.m,
+        color: COLORS.text,
+        marginBottom: SPACING.m,
     },
     bodyText: {
-        color: theme.colors.text,
+        color: COLORS.text,
         fontSize: 16,
         lineHeight: 24,
     },
     warningCard: {
         backgroundColor: 'rgba(239, 68, 68, 0.1)', // Red transparent
-        padding: theme.spacing.m,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.xl,
+        marginBottom: SPACING.xl,
         borderLeftWidth: 4,
-        borderLeftColor: theme.colors.danger,
+        borderLeftColor: COLORS.danger,
     },
     warningTitle: {
-        color: theme.colors.danger,
+        color: COLORS.danger,
         fontWeight: 'bold',
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
     warningText: {
-        color: theme.colors.danger,
+        color: COLORS.danger,
         marginBottom: 4,
     },
     rxCard: {
-        backgroundColor: theme.colors.surface,
-        padding: theme.spacing.m,
+        backgroundColor: COLORS.surface,
+        padding: SPACING.m,
         borderRadius: theme.borderRadius.m,
-        marginBottom: theme.spacing.m,
+        marginBottom: SPACING.m,
     },
     rxHeader: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        marginBottom: theme.spacing.s,
+        marginBottom: SPACING.s,
     },
     rxSymbol: {
-        color: theme.colors.text,
+        color: COLORS.text,
         fontWeight: 'bold',
         fontSize: 18,
     },
@@ -290,15 +290,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
     },
     rxReason: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         fontSize: 14,
     },
     resetButton: {
-        padding: theme.spacing.l,
+        padding: SPACING.l,
         alignItems: 'center',
     },
     resetText: {
-        color: theme.colors.textMuted,
+        color: COLORS.textMuted,
         textDecorationLine: 'underline',
     },
 });
